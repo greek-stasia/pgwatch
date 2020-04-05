@@ -1,7 +1,7 @@
 {
   "name": "PGWATCH",
   "version": "1.0.0",
-  "description": "Watches aa chat for profanity. Keeps tally and yells at you",
+  "description": "Watches a chat for profanity. Keeps tally and yells at you",
   "main": "pgwatch.js",
   "author": "Anastasia Bourlas",
   "dependencies": {
