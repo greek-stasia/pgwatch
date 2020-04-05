@@ -56,7 +56,7 @@ bot.on("ready", function(evt) {
 bot.on("message", function(user, userID, channelID, message, evt) {
   var words = message.split(" ");
   for (word in words) {
-	  if (prohibited.indexOf(crypto.createHash('sha1').update(word).digest('hex')) >= 0) {
+	  if (prohibited.includes(crypto.createHash('sha1').update(word.toLowerCase()).digest('hex'))) {
 		bot.sendMessage({
 		  to: channelID,
 		  message: "Watch your mouth!"
