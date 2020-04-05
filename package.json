@@ -1,0 +1,12 @@
+{
+  "name": "PGWATCH",
+  "version": "1.0.0",
+  "description": "Watches aa chat for profanity. Keeps tally and yells at you",
+  "main": "pgwatch.js",
+  "author": "Anastasia Bourlas",
+  "dependencies": {
+    "@tensorflow/tfjs-node": "^1.7.2",
+    "discord.io": "https://github.com/woor/discord.io/tarball/gateway_v6",
+    "winston": "^3.2.1"
+  }
+}
