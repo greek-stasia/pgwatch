@@ -1,10 +1,21 @@
 const Discord = require("discord.io");
 const logger = require("winston");
+const crypto = require("crypto");
 const auth = require("./auth.json");
-const crypto = require("./auth.json");
 
-
-var prohibited = [
+/*
+ *	Our blacklist of words to use in the chat
+ *
+ *	To generate a hash for a specific word run node in you terminal 
+ *	and create the following function. 
+ *
+ *	function hash(x) {
+ *	    return crypto.createHash('sha1').update(x).digest('hex');
+ *	}
+ *
+ * 	Pass whatever string in you want and copy the result below.
+ */
+const prohibited = [
   "bff272e9d673fa941d0a1920551d01a695516140",
   "38d0f91a99c57d189416439ce377ccdcd92639d0",
   "2336f5729424d0c84d319e991b3648cafa2c3c5b",
@@ -31,7 +42,7 @@ logger.add(new logger.transports.Console(), {
 });
 
 // Initialize Discord Bot
-var bot = new Discord.Client({
+const bot = new Discord.Client({
   token: auth.token,
   autorun: true
 });
