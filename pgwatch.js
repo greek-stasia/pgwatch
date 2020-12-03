@@ -1,19 +1,8 @@
-<<<<<<< HEAD
-const Discord = require("discord.io");
-=======
 const Discord = require("discord.js");
->>>>>>> 8d3f7e8... using discord.js instead of discord.io
 const logger = require("winston");
 const crypto = require("crypto");
 const auth = require("./auth.json");
 
-<<<<<<< HEAD
-/*
- *	Our blacklist of words to use in the chat
- *
- *	To generate a hash for a specific word run node in you terminal 
- *	and create the following function. 
-=======
 function hash(x) {
   return crypto
     .createHash("sha1")
@@ -26,7 +15,6 @@ function hash(x) {
  *
  *	To generate a hash for a specific word run node in you terminal
  *	and create the following function.
->>>>>>> 8d3f7e8... using discord.js instead of discord.io
  *
  *	function hash(x) {
  *	    return crypto.createHash('sha1').update(x).digest('hex');
@@ -61,14 +49,7 @@ logger.add(new logger.transports.Console(), {
 });
 
 // Initialize Discord Bot
-<<<<<<< HEAD
-const bot = new Discord.Client({
-  token: auth.token,
-  autorun: true
-});
-=======
 const bot = new Discord.Client();
->>>>>>> 8d3f7e8... using discord.js instead of discord.io
 
 bot.on("ready", function(evt) {
   logger.info("Connected");
@@ -76,19 +57,6 @@ bot.on("ready", function(evt) {
   logger.info(bot.username + " - (" + bot.id + ")");
 });
 
-<<<<<<< HEAD
-bot.on("message", function(user, userID, channelID, message, evt) {
-  var words = message.split(" ");
-  for (word in words) {
-	  if (prohibited.includes(crypto.createHash('sha1').update(word.toLowerCase()).digest('hex'))) {
-		bot.sendMessage({
-		  to: channelID,
-		  message: "Watch your mouth!"
-		});
-	  }
-  }
-});
-=======
 bot.on("message", message => {
   //let server = client.guilds.get(message.guild.id).id;
   //console.log(server);
@@ -99,8 +67,8 @@ bot.on("message", message => {
   let words = message.content.split(" ");
   console.log(words);
   for (word of words) {
-    console.log(word);
-    if (prohibited.indexOf(hash(word)) > -1) {
+    //console.log(word);
+    if (prohibited.indexOf(hash(word.toLowerCase())) > -1) {
       // Send "pong" to the same channel
       message.reply("Watch your mouth!");
     }
@@ -109,4 +77,3 @@ bot.on("message", message => {
 
 // Log our bot in using the token from https://discord.com/developers/applications
 bot.login(auth.bot_token);
->>>>>>> 8d3f7e8... using discord.js instead of discord.io

@@ -4,13 +4,10 @@
   "description": "Watches a chat for profanity. Keeps tally and yells at you",
   "main": "pgwatch.js",
   "author": "Anastasia Bourlas",
+  "repo": "",
+  "license": "MIT",
   "dependencies": {
-<<<<<<< HEAD
-    "@tensorflow/tfjs-node": "^1.7.2",
-    "discord.io": "https://github.com/woor/discord.io/tarball/gateway_v6",
-=======
     "discord.js": "^12.3.1",
->>>>>>> 8d3f7e8... using discord.js instead of discord.io
     "winston": "^3.2.1"
   }
 }
