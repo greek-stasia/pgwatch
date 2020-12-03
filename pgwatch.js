@@ -1,13 +1,32 @@
+<<<<<<< HEAD
 const Discord = require("discord.io");
+=======
+const Discord = require("discord.js");
+>>>>>>> 8d3f7e8... using discord.js instead of discord.io
 const logger = require("winston");
 const crypto = require("crypto");
 const auth = require("./auth.json");
 
+<<<<<<< HEAD
 /*
  *	Our blacklist of words to use in the chat
  *
  *	To generate a hash for a specific word run node in you terminal 
  *	and create the following function. 
+=======
+function hash(x) {
+  return crypto
+    .createHash("sha1")
+    .update(x)
+    .digest("hex");
+}
+
+/*
+ *	Our blacklist of words to use in the chat
+ *
+ *	To generate a hash for a specific word run node in you terminal
+ *	and create the following function.
+>>>>>>> 8d3f7e8... using discord.js instead of discord.io
  *
  *	function hash(x) {
  *	    return crypto.createHash('sha1').update(x).digest('hex');
@@ -42,10 +61,14 @@ logger.add(new logger.transports.Console(), {
 });
 
 // Initialize Discord Bot
+<<<<<<< HEAD
 const bot = new Discord.Client({
   token: auth.token,
   autorun: true
 });
+=======
+const bot = new Discord.Client();
+>>>>>>> 8d3f7e8... using discord.js instead of discord.io
 
 bot.on("ready", function(evt) {
   logger.info("Connected");
@@ -53,6 +76,7 @@ bot.on("ready", function(evt) {
   logger.info(bot.username + " - (" + bot.id + ")");
 });
 
+<<<<<<< HEAD
 bot.on("message", function(user, userID, channelID, message, evt) {
   var words = message.split(" ");
   for (word in words) {
@@ -64,3 +88,25 @@ bot.on("message", function(user, userID, channelID, message, evt) {
 	  }
   }
 });
+=======
+bot.on("message", message => {
+  //let server = client.guilds.get(message.guild.id).id;
+  //console.log(server);
+  //const list = client.guilds.cache.get("765755218880233522");
+  //list.members.cache.forEach(member => console.log(member.user.username));
+
+  console.log(message.content);
+  let words = message.content.split(" ");
+  console.log(words);
+  for (word of words) {
+    console.log(word);
+    if (prohibited.indexOf(hash(word)) > -1) {
+      // Send "pong" to the same channel
+      message.reply("Watch your mouth!");
+    }
+  }
+});
+
+// Log our bot in using the token from https://discord.com/developers/applications
+bot.login(auth.bot_token);
+>>>>>>> 8d3f7e8... using discord.js instead of discord.io
