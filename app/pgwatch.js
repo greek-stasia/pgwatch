@@ -66,9 +66,9 @@ bot.on("message", message => {
       message.reply("Watch your mouth!");
       let author = message.author;
       if (author.id in userTabs) {
-        userTabs[author] = userTabs[author] + 1;
+        userTabs[author.id] = userTabs[author] + 1;
       } else {
-        userTabs[author] = 1;
+        userTabs[author.id] = 1;
       }
       message.reply(" you're up to " + userTabs[author] + " no-no point(s)");
     }
