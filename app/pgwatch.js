@@ -1,7 +1,6 @@
 const Discord = require("discord.js");
 const logger = require("winston");
 const crypto = require("crypto");
-const auth = require("./auth.json");
 
 function hash(x) {
   return crypto

@@ -1,1 +1,1 @@
-worker: node pgwatch.js
+worker: node app/pgwatch.js
