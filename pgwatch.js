@@ -48,6 +48,7 @@ logger.add(new logger.transports.Console(), {
   colorize: true
 });
 
+let userTabs = {};
 // Initialize Discord Bot
 const bot = new Discord.Client();
 
@@ -58,19 +59,19 @@ bot.on("ready", function(evt) {
 });
 
 bot.on("message", message => {
-  //let server = client.guilds.get(message.guild.id).id;
-  //console.log(server);
-  //const list = client.guilds.cache.get("765755218880233522");
-  //list.members.cache.forEach(member => console.log(member.user.username));
-
   console.log(message.content);
   let words = message.content.split(" ");
   console.log(words);
   for (word of words) {
-    //console.log(word);
     if (prohibited.indexOf(hash(word.toLowerCase())) > -1) {
-      // Send "pong" to the same channel
       message.reply("Watch your mouth!");
+      let author = message.author;
+      if (author.id in userTabs) {
+        userTabs[author] = userTabs[author] + 1;
+      } else {
+        userTabs[author] = 1;
+      }
+      message.reply(" you're up to " + userTabs[author] + " no-no point(s)");
     }
   }
 });
