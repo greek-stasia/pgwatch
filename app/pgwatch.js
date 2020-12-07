@@ -70,7 +70,7 @@ bot.on("message", message => {
       } else {
         userTabs[author.id] = 1;
       }
-      message.reply(" you're up to " + userTabs[author] + " no-no point(s)");
+      message.reply(" you're up to " + userTabs[author.id] + " no-no point(s)");
     }
   }
 });
