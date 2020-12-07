@@ -14,3 +14,5 @@
 ```
 
 3. `npm install`
+
+4. node pgwatch.js
